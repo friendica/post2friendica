@@ -1,15 +1,15 @@
 {
-    "name": "post2friendica",
+    "name": "redshare",
     "license": "MIT",
-    "author": "Leberwurscht",
+    "author": "Leberwurscht/Macgirvin",
     "version": "0.7",
-    "fullName": "post2friendica",
+    "fullName": "redshare",
     "id": "jid1-VHReMUOdzb6BlQ",
-    "description": "Adds entries to the context menu that allow the user to share images, links, the page URL or a selection on his Friendica account easily: A new tab with a configurable Friendica site is opened, and the item is inserted into the textarea. The user can still edit or add something before posting.",
+    "description": "Adds entries to the context menu that allow the user to share images, links, the page URL or a selection on his Red Matrix account easily: A new tab with a configurable Red Matrix site is opened, and the item is inserted into the textarea. The user can still edit or add something before posting.",
     "preferences": [{
         "name": "network_url",
-        "title": "Friendica URL",
+        "title": "Red Matrix rpost URL",
         "type": "string",
-        "value": "http://example.com/network"
+        "value": "http://example.com/rpost"
     }]
 }
