@@ -84,7 +84,7 @@ self.port.on("post", function(data) {
     generator = "";
   }
 
-  if (generator.substring(0, 9)=="Friendica") {
+  if (generator.substring(0, 10)=="Red Matrix") {
     // if this is the login site, wait until login is completed
     if (document.getElementById("login_standard")) {
       return;
