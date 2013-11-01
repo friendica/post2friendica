@@ -1,15 +1,17 @@
 {
-    "name": "redshare",
-    "license": "MIT",
-    "author": "Leberwurscht/Macgirvin",
-    "version": "0.7",
-    "fullName": "redshare",
-    "id": "jid1-VHReMUOdzb6BlQ",
-    "description": "Adds entries to the context menu that allow the user to share images, links, the page URL or a selection on his Red Matrix account easily: A new tab with a configurable Red Matrix site is opened, and the item is inserted into the textarea. The user can still edit or add something before posting.",
-    "preferences": [{
-        "name": "network_url",
-        "title": "Red Matrix rpost URL",
-        "type": "string",
-        "value": "http://example.com/rpost"
-    }]
+    "preferences": [
+        {
+            "type": "string", 
+            "name": "network_url", 
+            "value": "http://example.com/rpost", 
+            "title": "Red Matrix rpost URL"
+        }
+    ], 
+    "description": "Adds entries to the context menu that allow the user to share images, links, the page URL or a selection on his Red Matrix account easily: A new tab with a configurable Red Matrix site is opened, and the item is inserted into the textarea. The user can still edit or add something before posting. Based on post2friendica by Leberwurscht", 
+    "license": "MIT", 
+    "author": "Macgirvin", 
+    "version": "0.8", 
+    "fullName": "redshare", 
+    "id": "jid1-0kdGIAxe386gmQ", 
+    "name": "redshare"
 }
