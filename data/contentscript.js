@@ -1,5 +1,5 @@
 //  taken from the Friendica jotShare function (view/jot-header.tpl)
-InsertHTMLScript = 'window.addEventListener("message", function(ev) { if (!editor) $("#profile-jot-text").val(""); initEditor(function() { addeditortext(ev.data);  $("#like-rotator-" + id).spin(false); $(window).scrollTop(0); }); }, false);'
+InsertHTMLScript = 'window.addEventListener("message", function(ev) { if (!editor) $("#profile-jot-text").val(""); initEditor(function() { addhtmltext(ev.data);  $("#like-rotator-" + id).spin(false); $(window).scrollTop(0); }); }, false);'
 
 //  taken from the Friendica jotGetLink function (view/jot-header.tpl)
 InsertURLScript = 'window.addEventListener("message", function(ev) { reply = bin2hex(ev.data); $.get("parse_url?binurl=" + reply, function(data) { if (!editor) $("#profile-jot-text").val(""); initEditor(function() { addeditortext(data);  $("#profile-rotator").spin(false); }); }); }, false);';
