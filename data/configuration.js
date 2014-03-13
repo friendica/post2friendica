@@ -9,8 +9,7 @@ self.port.on("done", function(data) {
 // add callback for form submission event
 document.getElementById("submit").addEventListener("click", function() {
   var network_url = document.forms[0].elements["network_url"].value;
-	if(network_url.search('/rpost') < 0)
-		network_url = network_url + '/rpost';	
+  network_url.replace('/rpost','');
   self.port.emit("configure", {"network_url":network_url});
 
   return false;

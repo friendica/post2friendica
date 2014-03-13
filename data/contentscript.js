@@ -4,6 +4,9 @@ InsertHTMLScript = 'window.addEventListener("message", function(ev) { if (!edito
 //  taken from the Friendica jotGetLink function (view/jot-header.tpl)
 InsertURLScript = 'window.addEventListener("message", function(ev) { reply = bin2hex(ev.data); $.get("parse_url?binurl=" + reply, function(data) { if (!editor) $("#profile-jot-text").val(""); initEditor(function() { addeditortext(data);  $("#profile-rotator").spin(false); }); }); }, false);';
 
+InsertBookMarkScript = 'window.addEventListener("message", function(ev) { $("#id_url").val(ev.data); $("#id_title").val(ev.data); })';
+
+
 // functions to insert items into the Friendica textarea
 function insertURL(href) {
   // inject the javascript
@@ -17,15 +20,22 @@ function insertURL(href) {
   document.defaultView.postMessage(href, '*');
 }
 
+function insertBookMark(href) {
+  // inject the javascript
+  // http://wiki.greasespot.net/Content_Script_Injection
+  var script = document.createElement('script');
+  script.setAttribute("type", "application/javascript");
+  script.textContent = InsertBookMarkScript;
+  document.body.appendChild(script);
+  document.body.removeChild(script);
+
+  document.defaultView.postMessage(href, '*');
+}
+
+
 function insertImage(src, alt) {
-  // create html code to insert
-  // http://stackoverflow.com/questions/2474605/how-to-convert-a-htmlelement-to-a-string
-  var container = document.createElement("div");
-  var el = document.createElement("img");
-  el.setAttribute('src', src);
-  el.setAttribute('alt', alt);
-  container.appendChild(el);
-  htmlcode = container.innerHTML;
+
+  var s = '[img]' + src + '[/img]';
 
   // inject the javascript
   // http://wiki.greasespot.net/Content_Script_Injection
@@ -35,7 +45,7 @@ function insertImage(src, alt) {
   document.body.appendChild(script);
   document.body.removeChild(script);
 
-  document.defaultView.postMessage(htmlcode, '*');
+  document.defaultView.postMessage(s, '*');
 }
 
 function insertQuote(source, title, text) {
@@ -86,12 +96,18 @@ self.port.on("post", function(data) {
 
   if (generator.substring(0, 10)=="Red Matrix") {
     // if this is the login site, wait until login is completed
-    if (document.getElementById("login_standard")) {
+    if (document.getElementById("main-login")) {
       return;
     }
 
+    if (document.getElementById("id_url")) {
+      if (data.type=="bookmark") {
+        insertBookMark(data.href);
+      }
+	}
+
     // insert item if text field present
-    if (document.getElementById("profile-jot-text")) {
+    else if (document.getElementById("profile-jot-text")) {
       if (data.type=="url") {
         insertURL(data.href);
       }
