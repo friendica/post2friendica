@@ -94,7 +94,7 @@ self.port.on("post", function(data) {
     generator = "";
   }
 
-  if (generator.substring(0, 10)=="Red Matrix") {
+	if ((generator.substring(0, 10)=="Red Matrix") || (generator.substring(0,9) == "redmatrix")) {
     // if this is the login site, wait until login is completed
     if (document.getElementById("main-login")) {
       return;
